@@ -144,7 +144,7 @@ Host script results:
 ```
 
 ## Port 80
-![[../Attachments/Pasted image 20210923194340.png]]
+![[Pasted image 20210923194340.png]]
 
 Converted Binary
 ![[Pasted image 20210923194500.png]]
