@@ -6,8 +6,6 @@ Command
 
 ```
 
-![](Pasted%20image%2020210924171810.png)
-
 Output
 ```
 
